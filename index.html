@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>여의도고 2학년 물리학 - 1학기 중간 기출분석 & 기말 대비 전략</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+    background: #f4f6fa;
+    color: #1a2332;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 0 16px 60px; }
+
+  /* 표지 */
+  .cover {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+    color: white;
+    padding: 48px 24px;
+    margin-bottom: 32px;
+    border-radius: 0 0 24px 24px;
+    box-shadow: 0 8px 24px rgba(30,58,95,0.15);
+  }
+  .cover-academy {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    color: #fde68a;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 14px;
+    border: 1px solid rgba(253,230,138,0.3);
+  }
+  .cover-school { font-size: 13px; opacity: 0.7; letter-spacing: 2px; margin-bottom: 8px; }
+  .cover-title { font-size: 28px; font-weight: 900; margin-bottom: 12px; line-height: 1.3; }
+  .cover-subtitle { font-size: 15px; opacity: 0.9; font-weight: 400; }
+  .cover-meta {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+  }
+  .meta-item { font-size: 13px; }
+  .meta-label { opacity: 0.7; font-size: 12px; margin-bottom: 4px; }
+  .meta-value { font-weight: 600; font-size: 15px; }
+
+  /* 섹션 공통 */
+  section { margin-bottom: 36px; }
+  .section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1e3a5f;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #1e3a5f;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title .num {
+    background: #1e3a5f;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  /* 카드 */
+  .card {
+    background: white;
+    border-radius: 14px;
+    padding: 22px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    margin-bottom: 16px;
+  }
+  .card h3 {
+    font-size: 16px;
+    color: #1e3a5f;
+    margin-bottom: 12px;
+    font-weight: 700;
+  }
+  .card p { font-size: 14px; color: #3a4a5e; }
+
+  /* 정보 그리드 */
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+  }
+  .info-item {
+    background: white;
+    padding: 16px;
+    border-radius: 12px;
+    border-left: 4px solid #2c5282;
+    text-align: center;
+  }
+  .info-item .label { font-size: 12px; color: #6a7a8e; margin-bottom: 6px; }
+  .info-item .value { font-size: 22px; font-weight: 700; color: #1e3a5f; }
+  .info-item .unit { font-size: 12px; color: #6a7a8e; margin-left: 2px; }
+
+  /* 차트 박스 */
+  .chart-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  @media (min-width: 720px) { .chart-row { grid-template-columns: 1fr 1fr; } }
+  .chart-box {
+    background: white;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .chart-box h3 {
+    font-size: 15px;
+    color: #1e3a5f;
+    margin-bottom: 12px;
+    font-weight: 700;
+    text-align: center;
+  }
+  .chart-canvas-wrapper { position: relative; height: 240px; }
+
+  /* 표 */
+  .table-wrap {
+    background: white;
+    border-radius: 14px;
+    overflow-x: auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    min-width: 640px;
+  }
+  thead { background: #1e3a5f; color: white; }
+  th {
+    padding: 12px 8px;
+    font-weight: 600;
+    font-size: 13px;
+    text-align: center;
+  }
+  td {
+    padding: 10px 8px;
+    border-bottom: 1px solid #e8edf3;
+    text-align: center;
+    vertical-align: middle;
+  }
+  td.left { text-align: left; }
+  tbody tr:hover { background: #f8fafc; }
+  tbody tr:last-child td { border-bottom: none; }
+
+  /* 난이도 뱃지 */
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+    min-width: 36px;
+  }
+  .badge-low { background: #2a9d8f; }
+  .badge-mid { background: #f4a261; }
+  .badge-high { background: #e63946; }
+  .badge-unit-1 { background: #1e3a5f; }
+  .badge-unit-2 { background: #f4a261; color: white; }
+  .badge-unit-3 { background: #4a6fa5; }
+
+  /* 변별 카드 */
+  .top5-card {
+    background: white;
+    border-radius: 14px;
+    padding: 18px;
+    margin-bottom: 12px;
+    border-left: 5px solid #e63946;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .top5-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .top5-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1e3a5f;
+  }
+  .top5-score {
+    font-size: 13px;
+    background: #fee2e2;
+    color: #991b1b;
+    padding: 3px 10px;
+    border-radius: 8px;
+    font-weight: 600;
+  }
+  .top5-body { font-size: 14px; color: #3a4a5e; }
+  .top5-tag {
+    display: inline-block;
+    background: #f1f5f9;
+    color: #475569;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    margin-right: 6px;
+    margin-top: 6px;
+  }
+
+  /* 점수 가이드 박스 */
+  .score-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  @media (min-width: 600px) { .score-grid { grid-template-columns: repeat(3, 1fr); } }
+  .score-tier {
+    background: white;
+    border-radius: 14px;
+    padding: 22px 18px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    border-top: 4px solid;
+  }
+  .score-tier.tier-low { border-top-color: #2a9d8f; }
+  .score-tier.tier-mid { border-top-color: #f4a261; }
+  .score-tier.tier-high { border-top-color: #e63946; }
+  .score-tier .tier-label { font-size: 13px; color: #6a7a8e; margin-bottom: 8px; }
+  .score-tier .tier-score {
+    font-size: 32px;
+    font-weight: 900;
+    color: #1e3a5f;
+    margin-bottom: 4px;
+  }
+  .score-tier .tier-desc { font-size: 13px; color: #3a4a5e; }
+
+  /* 인사이트 박스 */
+  .insight {
+    background: linear-gradient(135deg, #f8fafc 0%, #eef2f7 100%);
+    border-left: 4px solid #2c5282;
+    padding: 16px 18px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+  }
+  .insight-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1e3a5f;
+    margin-bottom: 6px;
+  }
+  .insight-body { font-size: 14px; color: #3a4a5e; }
+
+  /* 로드맵 표 */
+  .roadmap-table th { background: #2c5282; }
+  .roadmap-table td.week { font-weight: 700; color: #1e3a5f; }
+
+  /* 박스 강조 */
+  .highlight-box {
+    background: #fff8e1;
+    border: 2px solid #f4a261;
+    border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 16px;
+  }
+  .highlight-box .ht {
+    font-weight: 700;
+    color: #b85c00;
+    margin-bottom: 6px;
+    font-size: 15px;
+  }
+
+  /* 학원 푸터 */
+  .academy-footer {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+    color: white;
+    padding: 28px 24px;
+    border-radius: 16px;
+    margin-top: 40px;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(30,58,95,0.15);
+  }
+  .academy-footer .af-name {
+    font-size: 20px;
+    font-weight: 900;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .academy-footer .af-desc {
+    font-size: 13px;
+    opacity: 0.85;
+    margin-bottom: 18px;
+  }
+  .af-links {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .af-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 11px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .af-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.2); }
+  .af-home { background: white; color: #1e3a5f; }
+  .af-kakao { background: #FEE500; color: #3C1E1E; }
+
+  /* 플로팅 버튼 (모바일 친화) */
+  .floating-buttons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 100;
+  }
+  .fab {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+    font-size: 24px;
+    transition: transform 0.2s;
+  }
+  .fab:hover { transform: scale(1.1); }
+  .fab-kakao { background: #FEE500; }
+  .fab-home { background: #1e3a5f; color: white; font-size: 22px; }
+
+  /* 푸터 */
+  footer {
+    text-align: center;
+    color: #8a96a8;
+    font-size: 12px;
+    padding: 20px 0 12px;
+    margin-top: 16px;
+  }
+  footer b { color: #1e3a5f; }
+
+  /* 모바일 폰트 조정 */
+  @media (max-width: 480px) {
+    .cover-title { font-size: 22px; }
+    .section-title { font-size: 18px; }
+    .info-item .value { font-size: 18px; }
+    table { font-size: 12px; }
+    th, td { padding: 8px 6px; }
+  }
+
+  /* 손풀이 답지 */
+  .hw-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  @media (min-width: 720px) { .hw-grid { grid-template-columns: 1fr 1fr; } }
+  .hw-card {
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border: 2px solid #fef3c7;
+    transition: transform 0.2s;
+  }
+  .hw-card:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.1); }
+  .hw-header {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #fde68a;
+  }
+  .hw-num {
+    background: #b45309;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .hw-topic {
+    font-size: 13px;
+    color: #78350f;
+    font-weight: 600;
+  }
+  .hw-img-wrap {
+    background: #fafafa;
+    padding: 8px;
+    cursor: pointer;
+    text-align: center;
+  }
+  .hw-img-wrap img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 6px;
+  }
+  .hw-zoom-hint {
+    text-align: center;
+    font-size: 12px;
+    color: #8a96a8;
+    padding: 6px;
+    background: #f8fafc;
+  }
+
+  /* 라이트박스 */
+  #lightbox {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.92);
+    z-index: 9999;
+    cursor: zoom-out;
+    padding: 20px;
+    overflow: auto;
+  }
+  #lightbox.active { display: flex; align-items: flex-start; justify-content: center; }
+  #lightbox img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  }
+  #lightbox .close-hint {
+    position: fixed;
+    top: 16px;
+    right: 20px;
+    color: white;
+    font-size: 14px;
+    background: rgba(255,255,255,0.15);
+    padding: 8px 14px;
+    border-radius: 20px;
+  }
+
+  /* 목차 */
+  .toc {
+    background: white;
+    border-radius: 14px;
+    padding: 18px 22px;
+    margin-bottom: 28px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .toc-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1e3a5f;
+    margin-bottom: 10px;
+  }
+  .toc ol { padding-left: 22px; font-size: 14px; color: #3a4a5e; }
+  .toc ol li { margin-bottom: 4px; }
+  .toc ol li a { color: #2c5282; text-decoration: none; }
+  .toc ol li a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="container" style="max-width: 920px; padding: 0;">
+    <div class="cover-academy">최과학 과학전문학원</div>
+    <div class="cover-school">YEOUIDO HIGH SCHOOL · GRADE 2 · PHYSICS</div>
+    <div class="cover-title">여의도고 2학년 물리학<br>2026 1학기 중간 기출분석</div>
+    <div class="cover-subtitle">+ 1학기 기말고사 대비 전략 가이드</div>
+    <div class="cover-meta">
+      <div class="meta-item">
+        <div class="meta-label">시행일</div>
+        <div class="meta-value">2026.4.27 (월)</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">총점 / 시험시간</div>
+        <div class="meta-value">100점 / 40분</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">선택형</div>
+        <div class="meta-value">16문항 · 70점</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">서답형</div>
+        <div class="meta-value">6문항 · 30점</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="toc">
+    <div class="toc-title">📑 목차</div>
+    <ol>
+      <li><a href="#s1">시험 한눈에 보기</a></li>
+      <li><a href="#s2">단원별 출제 비중 & 난이도 분포</a></li>
+      <li><a href="#s3">22문항 전체 분석표</a></li>
+      <li><a href="#s4">핵심 변별 문항 TOP 4</a></li>
+      <li><a href="#s-hw">✍️ 미영쌤 손풀이 답지 (8문항)</a></li>
+      <li><a href="#s5">여의도고 출제 패턴 인사이트</a></li>
+      <li><a href="#s6">점수 구간별 의미</a></li>
+      <li><a href="#s7">1학기 기말고사 범위 안내</a></li>
+      <li><a href="#s8">8주 학습 로드맵</a></li>
+      <li><a href="#s9">기말 대비 핵심 전략</a></li>
+    </ol>
+  </div>
+
+  <!-- 1. 시험 한눈에 보기 -->
+  <section id="s1">
+    <div class="section-title"><span class="num">1</span>시험 한눈에 보기</div>
+    <div class="info-grid">
+      <div class="info-item">
+        <div class="label">총 문항 수</div>
+        <div class="value">22<span class="unit">개</span></div>
+      </div>
+      <div class="info-item">
+        <div class="label">총점</div>
+        <div class="value">100<span class="unit">점</span></div>
+      </div>
+      <div class="info-item">
+        <div class="label">시험 시간</div>
+        <div class="value">40<span class="unit">분</span></div>
+      </div>
+      <div class="info-item">
+        <div class="label">서답형 비중</div>
+        <div class="value">30<span class="unit">%</span></div>
+      </div>
+    </div>
+    <div class="card" style="margin-top: 14px;">
+      <h3>📌 한 줄 평</h3>
+      <p>역학 단원 비중이 64%로 압도적이며, 그래프 해석 + 복합 개념 결합형 변별 문항이 4문항 이상 출제되었습니다. 40분 안에 22문항을 풀어내야 하므로 <b>시간 압박이 큰 시험</b>입니다.</p>
+    </div>
+  </section>
+
+  <!-- 2. 단원별 출제 비중 & 난이도 분포 -->
+  <section id="s2">
+    <div class="section-title"><span class="num">2</span>단원별 출제 비중 & 난이도 분포</div>
+    <div class="chart-row">
+      <div class="chart-box">
+        <h3>단원별 출제 비중 (점수 기준)</h3>
+        <div class="chart-canvas-wrapper"><canvas id="unitChart"></canvas></div>
+      </div>
+      <div class="chart-box">
+        <h3>난이도 분포 (점수 기준)</h3>
+        <div class="chart-canvas-wrapper"><canvas id="diffChart"></canvas></div>
+      </div>
+    </div>
+    <div class="card" style="margin-top: 14px;">
+      <h3>📊 비중 요약</h3>
+      <p style="margin-bottom:8px;"><b>역학 (운동·힘·에너지·돌림힘)</b> 58.7점 / 100점 = <b style="color:#1e3a5f;">58.7%</b></p>
+      <p style="margin-bottom:8px;"><b>열역학 (열기관·열효율)</b> 5점 / 100점 = <b style="color:#f4a261;">5%</b></p>
+      <p><b>전기 (전기장·회로·축전기)</b> 36.3점 / 100점 = <b style="color:#4a6fa5;">36.3%</b></p>
+    </div>
+  </section>
+
+  <!-- 3. 22문항 전체 분석표 -->
+  <section id="s3">
+    <div class="section-title"><span class="num">3</span>22문항 전체 분석표</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>번호</th>
+            <th>단원</th>
+            <th>핵심 개념</th>
+            <th>배점</th>
+            <th>난이도</th>
+            <th class="left">코멘트</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td><span class="badge badge-unit-1">역학</span></td><td>힘의 평형·작용반작용</td><td>4.2</td><td><span class="badge badge-low">하</span></td><td class="left">3물체 적층 + 위로 미는 힘. 평형식만 세우면 끝.</td></tr>
+          <tr><td>2</td><td><span class="badge badge-unit-1">역학</span></td><td>운동량 보존</td><td>4.2</td><td><span class="badge badge-low">하</span></td><td class="left">3물체 충돌 후 모두 정지. ΣP=0 한 줄로 해결.</td></tr>
+          <tr><td>3</td><td><span class="badge badge-unit-1">역학</span></td><td>v-t 그래프 해석</td><td>4.2</td><td><span class="badge badge-low">하</span></td><td class="left">이동거리·운동방향 변화·알짜힘 비. 그래프 기본기.</td></tr>
+          <tr><td>4</td><td><span class="badge badge-unit-1">역학</span></td><td>3물체 가속도·작용반작용</td><td>4.3</td><td><span class="badge badge-low">하</span></td><td class="left">전체 가속도 a=2 m/s². 표준 유형.</td></tr>
+          <tr><td>5</td><td><span class="badge badge-unit-3">전기</span></td><td>균일 전기장 속 점전하 운동</td><td>4.3</td><td><span class="badge badge-low">하</span></td><td class="left">전위차→일→운동E 변환. 등가속도 분석.</td></tr>
+          <tr><td>6</td><td><span class="badge badge-unit-3">전기</span></td><td>휘트스톤 브리지</td><td>4.3</td><td><span class="badge badge-low">하</span></td><td class="left">전압계 6V 조건으로 R 결정. 비례식 패턴.</td></tr>
+          <tr><td>7</td><td><span class="badge badge-unit-1">역학</span></td><td>빗면 등속도 + 용수철 압축</td><td>4.3</td><td><span class="badge badge-low">하</span></td><td class="left">역학적E 보존 + 손실에너지. 손실항 빠뜨리면 오답.</td></tr>
+          <tr><td>8</td><td><span class="badge badge-unit-3">전기</span></td><td>평행판 축전기 4종 비교</td><td>4.3</td><td><span class="badge badge-low">하</span></td><td class="left">단면적·간격 다른 4개 전하량 비. C=εS/d 응용.</td></tr>
+          <tr><td>9</td><td><span class="badge badge-unit-1">역학</span></td><td>도르래 두 가지 비교</td><td>4.4</td><td><span class="badge badge-low">하</span></td><td class="left">가속도·일·장력 비교. 빈출 유형.</td></tr>
+          <tr><td>10</td><td><span class="badge badge-unit-1">역학</span></td><td>등가속도 + 등속도 만나기</td><td>4.4</td><td><span class="badge badge-mid">중</span></td><td class="left">v-t 그래프로 시각화하면 5v 도출. 그래프 활용 필수.</td></tr>
+          <tr><td>11</td><td><span class="badge badge-unit-3">전기</span></td><td>회로 + 스위치 조합</td><td>4.4</td><td><span class="badge badge-mid">중</span></td><td class="left">S1·S2 ON/OFF에 따라 합성저항 변화. 케이스 분석.</td></tr>
+          <tr><td>12</td><td><span class="badge badge-unit-3">전기</span></td><td>평행판 축전기 + 회로</td><td>4.5</td><td><span class="badge badge-mid">중</span></td><td class="left">동일 축전기, 병렬 → V 같다, Q∝V. 추론형.</td></tr>
+          <tr><td>13</td><td><span class="badge badge-unit-1">역학</span></td><td>3물체 충돌 + x-t 그래프</td><td>4.5</td><td><span class="badge badge-high">상</span></td><td class="left">B-C 거리 그래프 해석 + 운동량 보존 2회 적용.</td></tr>
+          <tr><td>14</td><td><span class="badge badge-unit-3">전기</span></td><td>점전하 + 전기장 0지점</td><td>4.5</td><td><span class="badge badge-mid">중</span></td><td class="left">전기장 0지점이 외부에 존재 → 전하 부호·크기 추론. 반복 학습 시 안정 영역.</td></tr>
+          <tr><td>15</td><td><span class="badge badge-unit-1">역학</span></td><td>막대 + 도르래 + 공</td><td>4.6</td><td><span class="badge badge-high">상</span></td><td class="left">돌림힘 + 장력비 3:1. M 결정. 복합형 최상난도.</td></tr>
+          <tr><td>16</td><td><span class="badge badge-unit-1">역학</span></td><td>줄 끊어진 후 등가속도</td><td>4.6</td><td><span class="badge badge-high">상</span></td><td class="left">속도비 14/11 조건 → M 도출. 식 정리력 필요.</td></tr>
+          <tr><td>서답1</td><td><span class="badge badge-unit-1">역학</span></td><td>막대 평형 (돌림힘)</td><td>5.0</td><td><span class="badge badge-low">하</span></td><td class="left">(1) x=2L 회전평형 (2) P지지력=7mg.</td></tr>
+          <tr><td>서답2</td><td><span class="badge badge-unit-2">열역학</span></td><td>열기관 효율</td><td>5.0</td><td><span class="badge badge-mid">중</span></td><td class="left">(1) WA=Q0/3 (2) B효율=4/15. 효율식 적용.</td></tr>
+          <tr><td>서답3</td><td><span class="badge badge-unit-3">전기</span></td><td>균일 전기장 속 점전하</td><td>5.0</td><td><span class="badge badge-low">하</span></td><td class="left">(1) 부호·전기력 (2) 전위차 (3) v=√(2qEd/m).</td></tr>
+          <tr><td>서답4</td><td><span class="badge badge-unit-3">전기</span></td><td>회로 + 전력비</td><td>5.0</td><td><span class="badge badge-mid">중</span></td><td class="left">(1) R=20Ω (2) 소비전력비 계산.</td></tr>
+          <tr><td>서답5</td><td><span class="badge badge-unit-1">역학</span></td><td>마찰면 + 일에너지</td><td>5.0</td><td><span class="badge badge-mid">중</span></td><td class="left">(1) F=5N (2) v=√30 m/s. 알짜F·일에너지정리.</td></tr>
+          <tr><td>서답6</td><td><span class="badge badge-unit-1">역학</span></td><td>두 용수철 + 운동E 최댓값</td><td>5.0</td><td><span class="badge badge-high">상</span></td><td class="left">x=d 도출. 알짜F=0 지점 + 에너지 보존 복합.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 4. 핵심 변별 문항 TOP 5 -->
+  <section id="s4">
+    <div class="section-title"><span class="num">4</span>핵심 변별 문항 TOP 4</div>
+
+    <div class="top5-card">
+      <div class="top5-header">
+        <div class="top5-title">15번 · 막대 + 도르래 + 공</div>
+        <div class="top5-score">4.6점 · 상</div>
+      </div>
+      <div class="top5-body">두 줄에 매달린 막대 위에 공이 놓여 있고, 공이 도르래로 한쪽 줄과 연결된 복합 구조. <b>돌림힘 + 장력비(A:B=3:1)</b>를 동시에 다뤄야 한다. M=22kg 도출까지 식 3개 이상 필요.</div>
+      <div><span class="top5-tag">돌림힘</span><span class="top5-tag">장력</span><span class="top5-tag">도르래</span></div>
+    </div>
+
+    <div class="top5-card">
+      <div class="top5-header">
+        <div class="top5-title">16번 · 줄 끊어진 후 등가속도</div>
+        <div class="top5-score">4.6점 · 상</div>
+      </div>
+      <div class="top5-body">줄 끊김 전후의 두 가속도를 따로 구해 <b>속도비 14/11</b> 조건으로 M을 결정하는 문제. 운동방정식 + 등가속도 공식 + 비례식. 식 정리력 부족하면 함정 빠짐.</div>
+      <div><span class="top5-tag">운동방정식</span><span class="top5-tag">등가속도</span><span class="top5-tag">속도비</span></div>
+    </div>
+
+    <div class="top5-card">
+      <div class="top5-header">
+        <div class="top5-title">13번 · 3물체 충돌 + x-t 그래프</div>
+        <div class="top5-score">4.5점 · 상</div>
+      </div>
+      <div class="top5-body">B와 C 사이 거리를 시간에 따라 나타낸 그래프 해석이 핵심. 2초·5초 충돌 시점에서 <b>운동량 보존을 2번 적용</b>해야 한다. 그래프 함정에 약한 학생이 잘 틀림.</div>
+      <div><span class="top5-tag">운동량보존</span><span class="top5-tag">그래프</span><span class="top5-tag">충돌</span></div>
+    </div>
+
+    <div class="top5-card">
+      <div class="top5-header">
+        <div class="top5-title">서답형 6 · 두 용수철 + 운동E 최댓값</div>
+        <div class="top5-score">5.0점 · 상</div>
+      </div>
+      <div class="top5-body">두 용수철 사이에서 진동하는 물체. <b>운동E 최대 = 알짜힘 0인 지점</b>을 찾아 그 위치에서 에너지 보존을 적용. x=d 도출. 출제 빈도 낮은 변형 유형이라 사고력 요구.</div>
+      <div><span class="top5-tag">용수철</span><span class="top5-tag">운동E최대</span><span class="top5-tag">에너지보존</span></div>
+    </div>
+  </section>
+
+  <!-- ★ 선생님 손풀이 답지 -->
+  <section id="s-hw">
+    <div class="section-title"><span class="num" style="background:#b45309;">✍</span>미영쌤 손풀이 답지 (8문항)</div>
+    <div class="card" style="margin-bottom:14px; background:#fffbeb; border-left:4px solid #f59e0b;">
+      <p><b>최과학 과학전문학원 수업·직보</b>에서 다룬 핵심 8개 문항의 미영쌤 풀이 노트입니다. <b>사진을 클릭하면 크게 볼 수 있어요.</b> 풀이 흐름을 보면서 같은 유형이 기말에 나왔을 때 어떻게 접근해야 하는지 익히세요.</p>
+    </div>
+
+    <div class="hw-grid">
+      <div class="hw-card">
+        <div class="hw-header">
+          <span class="hw-num">2번</span>
+          <span class="hw-topic">운동량 보존 · 4.2점</span>
+        </div>
+        <div class="hw-img-wrap" onclick="openLightbox('handwritten/IMG_2169.jpg')">
+          <img src="handwritten/IMG_2169.jpg" alt="2번 손풀이" loading="lazy">
+        </div>
+        <div class="hw-zoom-hint">🔍 클릭하면 확대됩니다</div>
+      </div>
+
+      <div class="hw-card">
+        <div class="hw-header">
+          <span class="hw-num">7번</span>
+          <span class="hw-topic">빗면 등속도 + 용수철 · 4.3점</span>
+        </div>
+        <div class="hw-img-wrap" onclick="openLightbox('handwritten/IMG_2170.jpg')">
+          <img src="handwritten/IMG_2170.jpg" alt="7번 손풀이" loading="lazy">
+        </div>
+        <div class="hw-zoom-hint">🔍 클릭하면 확대됩니다</div>
+      </div>
+
+      <div class="hw-card">
+        <div class="hw-header">
+          <span class="hw-num">9번</span>
+          <span class="hw-topic">도르래 두 가지 비교 · 4.4점</span>
+        </div>
+        <div class="hw-img-wrap" onclick="openLightbox('handwritten/IMG_2171.jpg')">
+          <img src="handwritten/IMG_2171.jpg" alt="9번 손풀이" loading="lazy">
+        </div>
+        <div class="hw-zoom-hint">🔍 클릭하면 확대됩니다</div>
+      </div>
+
+      <div class="hw-card">
+        <div class="hw-header">
+          <span class="hw-num">10번</span>
+          <span class="hw-topic">등가속도 + 속도 그래프 · 4.4점</span>
+        </div>
+        <div class="hw-img-wrap" onclick="openLightbox('handwritten/IMG_2174.jpg')">
+          <img src="handwritten/IMG_2174.jpg" alt="10번 손풀이" loading="lazy">
+        </div>
+        <div class="hw-zoom-hint">🔍 클릭하면 확대됩니다</div>
+      </div>
+
+      <div class="hw-card">
+        <div class="hw-header">
+          <span class="hw-num">12번</span>
+          <span class="hw-topic">평행판 축전기 + 회로 · 4.5점</span>
+        </div>
+        <div class="hw-img-wrap" onclick="openLightbox('handwritten/IMG_2175.jpg')">
+          <img src="handwritten/IMG_2175.jpg" alt="12번 손풀이" loading="lazy">
+        </div>
+        <div class="hw-zoom-hint">🔍 클릭하면 확대됩니다</div>
+      </div>
+
+      <div class="hw-card">
+        <div class="hw-header">
+          <span class="hw-num">서답형 1</span>
+          <span class="hw-topic">막대 평형 · 5.0점</span>
+        </div>
+        <div class="hw-img-wrap" onclick="openLightbox('handwritten/IMG_2176.jpg')">
+          <img src="handwritten/IMG_2176.jpg" alt="서답형1 손풀이" loading="lazy">
+        </div>
+        <div class="hw-zoom-hint">🔍 클릭하면 확대됩니다</div>
+      </div>
+
+      <div class="hw-card">
+        <div class="hw-header">
+          <span class="hw-num">서답형 5</span>
+          <span class="hw-topic">마찰면 + 일에너지 · 5.0점</span>
+        </div>
+        <div class="hw-img-wrap" onclick="openLightbox('handwritten/IMG_2177.jpg')">
+          <img src="handwritten/IMG_2177.jpg" alt="서답형5 손풀이" loading="lazy">
+        </div>
+        <div class="hw-zoom-hint">🔍 클릭하면 확대됩니다</div>
+      </div>
+
+      <div class="hw-card">
+        <div class="hw-header">
+          <span class="hw-num">서답형 6</span>
+          <span class="hw-topic">두 용수철 + 운동E 최댓값 · 5.0점</span>
+        </div>
+        <div class="hw-img-wrap" onclick="openLightbox('handwritten/IMG_2178.jpg')">
+          <img src="handwritten/IMG_2178.jpg" alt="서답형6 손풀이" loading="lazy">
+        </div>
+        <div class="hw-zoom-hint">🔍 클릭하면 확대됩니다</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. 여의도고 출제 패턴 인사이트 -->
+  <section id="s5">
+    <div class="section-title"><span class="num">5</span>여의도고 출제 패턴 인사이트</div>
+
+    <div class="insight">
+      <div class="insight-title">① 그래프 해석 비중이 매우 높다</div>
+      <div class="insight-body">3번(v-t), 10번(등가속도+등속도), 13번(x-t) 등 그래프 직접 해석 문항이 다수. 변별 문항일수록 <b>그래프를 직접 그리거나 읽는 능력</b>이 결정적.</div>
+    </div>
+
+    <div class="insight">
+      <div class="insight-title">② 복합 개념 결합형 변별</div>
+      <div class="insight-body">15번(돌림힘+장력+도르래), 16번(운동방정식+속도공식), 서답6(에너지보존+알짜힘) 등 단일 개념으로는 풀리지 않는 문항이 변별을 만든다.</div>
+    </div>
+
+    <div class="insight">
+      <div class="insight-title">③ 함정 패턴 — "당연해 보이는 식"의 빠진 항</div>
+      <div class="insight-body">7번처럼 마찰 손실에너지를 빠뜨리거나, 13번처럼 그래프 부호를 잘못 읽거나. <b>식을 세울 때 모든 항을 빠짐없이 포함</b>하는 습관이 점수를 가른다.</div>
+    </div>
+
+    <div class="insight">
+      <div class="insight-title">④ 서답형 30% — 풀이과정 점수 비중 큼</div>
+      <div class="insight-body">서답1·5·6 모두 부분 점수 구조. 답만 맞아도 안 되고, <b>식 유도 → 대입 → 정리</b> 순서로 풀이를 써야 만점. 서답형 연습이 점수의 1/3을 좌우.</div>
+    </div>
+
+    <div class="insight">
+      <div class="insight-title">⑤ 시간 압박 — 40분/22문항</div>
+      <div class="insight-body">한 문항당 평균 1분 50초. 변별 문항 4개에 시간을 쓰면 나머지 18문항을 30분 안에 풀어야 함. <b>쉬운 문제 빠르게 → 변별 문제 마지막에</b> 전략 필수.</div>
+    </div>
+  </section>
+
+  <!-- 6. 점수 구간별 의미 -->
+  <section id="s6">
+    <div class="section-title"><span class="num">6</span>점수 구간별 의미</div>
+    <div class="score-grid">
+      <div class="score-tier tier-low">
+        <div class="tier-label">기본 개념 충실 시</div>
+        <div class="tier-score">53점</div>
+        <div class="tier-desc">기본 운동·힘·에너지·기본 회로 개념 정확히 이해</div>
+      </div>
+      <div class="score-tier tier-mid">
+        <div class="tier-label">응용까지 풀어낼 시</div>
+        <div class="tier-score">75점</div>
+        <div class="tier-desc">단원 간 결합 · 그래프 해석 · 추론형까지 가능</div>
+      </div>
+      <div class="score-tier tier-high">
+        <div class="tier-label">변별 문항 정복 시</div>
+        <div class="tier-score">85점+</div>
+        <div class="tier-desc">15·16·서답6 등 복합 변별 문항에서 2~3개 정답</div>
+      </div>
+    </div>
+    <div class="card" style="margin-top: 14px;">
+      <p>📌 <b>난이도별 점수 분포</b> — 하 52.5점 / 중 22.8점 / 상 24.7점. 즉 <b>하·중을 모두 잡으면 75점대 진입</b>이 가능합니다. 변별 영역(상)은 시간 안배를 잘했을 때 도전하는 영역입니다.</p>
+    </div>
+  </section>
+
+  <!-- 7. 1학기 기말고사 범위 안내 -->
+  <section id="s7">
+    <div class="section-title"><span class="num">7</span>1학기 기말고사 범위 안내</div>
+    <div class="info-grid">
+      <div class="info-item">
+        <div class="label">여의도고 기말</div>
+        <div class="value" style="font-size:16px;">6.30 ~ 7.6</div>
+      </div>
+      <div class="info-item">
+        <div class="label">여의도여고 기말</div>
+        <div class="value" style="font-size:16px;">7.1 ~ 7.7</div>
+      </div>
+      <div class="info-item">
+        <div class="label">학습 시작</div>
+        <div class="value" style="font-size:16px;">5.3 (일)</div>
+      </div>
+      <div class="info-item">
+        <div class="label">학습 기간</div>
+        <div class="value">약 8~9<span class="unit">주</span></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:14px;">
+      <h3>📚 기말 범위 — 9개 소단원</h3>
+      <div class="table-wrap" style="margin-top:8px; box-shadow:none;">
+        <table>
+          <thead>
+            <tr><th>대단원</th><th>중단원</th><th>소단원</th></tr>
+          </thead>
+          <tbody>
+            <tr><td rowspan="3"><b>2권 전기와 자기</b></td><td rowspan="3">2. 자기</td><td class="left">물질의 자성</td></tr>
+            <tr><td class="left">전류의 자기 작용</td></tr>
+            <tr><td class="left">전자기 유도</td></tr>
+            <tr><td rowspan="6"><b>3권 빛과 물질</b></td><td rowspan="3">1. 빛과 이중성</td><td class="left">빛의 중첩과 간섭</td></tr>
+            <tr><td class="left">빛의 굴절 <b>(볼록·오목렌즈 작도법 포함)</b></td></tr>
+            <tr><td class="left">빛과 물질의 이중성 (광전효과·드브로이)</td></tr>
+            <tr><td rowspan="3">2. 물질과 시공간</td><td class="left">스펙트럼과 에너지 준위 (보어 원자모형)</td></tr>
+            <tr><td class="left">에너지띠와 반도체 <b>(다이오드 포함)</b></td></tr>
+            <tr><td class="left">특수 상대성 이론 <b>(동시성의 상대성 제외)</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="highlight-box" style="margin-top:14px;">
+      <div class="ht">⚠️ 중간과 기말은 단원이 다릅니다</div>
+      <div>중간 범위(역학 + 전기 전반)와 기말 범위(자기 + 빛과 물질)는 <b>거의 겹치지 않습니다</b>. 그러나 학교의 출제 패턴(그래프 비중, 함정 스타일, 서답형 출제 방식)은 동일하게 적용될 가능성이 매우 높으므로, 위의 출제 패턴 분석을 기말 학습에도 그대로 활용해야 합니다.</div>
+    </div>
+
+    <div class="highlight-box" style="margin-top:14px; background:#e8f4fd; border-color:#2c5282;">
+      <div class="ht" style="color:#1e3a5f;">📖 2022 개정 교육과정 핵심 변경점</div>
+      <div>
+        ✔ <b>빛의 굴절</b> 단원에 <b>볼록·오목렌즈 작도법</b>이 명시 포함됨<br>
+        ✔ <b>특수 상대성 이론</b>에서 <b>동시성의 상대성은 제외</b> — 시간 팽창·길이 수축만 학습<br>
+        ✔ <b>에너지띠·반도체</b> 단원에 <b>다이오드(p-n접합)</b> 포함
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. 8주 학습 로드맵 -->
+  <section id="s8">
+    <div class="section-title"><span class="num">8</span>8주 학습 로드맵</div>
+    <div class="table-wrap">
+      <table class="roadmap-table">
+        <thead>
+          <tr><th>주차</th><th>기간</th><th>학습 내용</th><th>핵심 포인트</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="week">1주</td><td>5/3~5/9</td><td class="left">2권 자기 — 물질의 자성</td><td class="left">강자성·상자성·반자성 구분, 자기쌍극자</td></tr>
+          <tr><td class="week">2주</td><td>5/10~5/16</td><td class="left">2권 자기 — 전류의 자기 작용 / 전자기 유도</td><td class="left">앙페르 법칙, 솔레노이드, 렌츠·패러데이</td></tr>
+          <tr><td class="week">3주</td><td>5/17~5/23</td><td class="left">3권 1단원 — 빛의 중첩과 간섭</td><td class="left">이중슬릿, 경로차, 위상차 그래프</td></tr>
+          <tr><td class="week">4주</td><td>5/24~5/30</td><td class="left">3권 1단원 — 빛의 굴절(렌즈 작도법) / 이중성</td><td class="left">스넬법칙, <b>볼록·오목렌즈 작도법</b>, 광전효과, 드브로이 파장</td></tr>
+          <tr><td class="week">5주</td><td>5/31~6/6</td><td class="left">3권 2단원 — 스펙트럼·에너지 준위</td><td class="left">보어 원자모형, 에너지 준위, 방출·흡수 스펙트럼</td></tr>
+          <tr><td class="week">6주</td><td>6/7~6/13</td><td class="left">3권 2단원 — 에너지띠·반도체·다이오드 / 특수상대성</td><td class="left">전도띠·원자가띠, p-n접합·다이오드, <b>시간팽창·길이수축</b> (동시성의 상대성 제외)</td></tr>
+          <tr><td class="week">7주</td><td>6/14~6/20</td><td class="left">전체 복습 + 기출 패턴 적용 문제</td><td class="left">그래프·복합 개념·함정 유형 집중</td></tr>
+          <tr><td class="week">8주</td><td>6/21~기말</td><td class="left">실전 모의고사 + 직보 + 오답 정리</td><td class="left">시간 안배 연습, 서답형 풀이과정 점검</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 9. 기말 대비 핵심 전략 -->
+  <section id="s9">
+    <div class="section-title"><span class="num">9</span>기말 대비 핵심 전략</div>
+
+    <div class="card">
+      <h3>🎯 학습 우선순위 (기말 예상 비중)</h3>
+      <p style="margin-bottom:6px;"><b>1순위 — 전자기 유도</b> : 그래프 해석 + 변별 문제 출제 가능성 매우 높음. 렌츠 법칙 부호, 유도기전력 식 완벽 숙지.</p>
+      <p style="margin-bottom:6px;"><b>2순위 — 빛의 간섭·굴절(렌즈 작도법 포함)</b> : 계산 문제 + 경로차 그래프 + <b>볼록·오목렌즈 작도법</b>. 2022 개정에서 작도법이 명시 포함됨.</p>
+      <p style="margin-bottom:6px;"><b>3순위 — 광전효과·물질의 이중성</b> : 일함수, 운동E, 드브로이 파장 관계식. 개념+계산 혼합형.</p>
+      <p style="margin-bottom:6px;"><b>4순위 — 보어 원자모형·에너지 준위·스펙트럼</b> : 에너지 준위 차로 방출·흡수 파장 계산.</p>
+      <p style="margin-bottom:6px;"><b>5순위 — 에너지띠·반도체·다이오드</b> : 전도띠/원자가띠 구분, p-n접합 다이오드 동작 원리.</p>
+      <p><b>6순위 — 특수 상대성 이론</b> : <b>시간 팽창·길이 수축</b>만 학습 (2022 개정 — <b>동시성의 상대성은 제외</b>).</p>
+    </div>
+
+    <div class="card">
+      <h3>⏱️ 시험장 시간 배분 (40분)</h3>
+      <p style="margin-bottom:6px;"><b>0~15분</b> : 객관식 1~9번 + 12번 (기본 영역) — 1문항당 약 1분 30초</p>
+      <p style="margin-bottom:6px;"><b>15~25분</b> : 서답형 1·2·3·5번 (확실히 풀 수 있는 것부터) — 1문항당 약 2분 30초</p>
+      <p style="margin-bottom:6px;"><b>25~35분</b> : 객관식 10·11·14번 + 서답형 4번 (응용 영역)</p>
+      <p><b>35~40분</b> : 변별 문항 13·15·16번 + 서답형 6번 (도전 영역) — 못 풀어도 부분점수 노리기</p>
+    </div>
+
+    <div class="card">
+      <h3>📝 서답형 30점 정복 — 풀이 작성 5원칙</h3>
+      <p style="margin-bottom:6px;">1. <b>주어진 조건</b>을 먼저 식으로 옮긴다</p>
+      <p style="margin-bottom:6px;">2. <b>적용할 법칙·공식</b>을 명시한다 (예: 운동량 보존)</p>
+      <p style="margin-bottom:6px;">3. <b>대입식</b>을 한 줄 써준다</p>
+      <p style="margin-bottom:6px;">4. <b>단위</b>를 정확히 붙인다</p>
+      <p>5. <b>최종 답</b>은 박스나 밑줄로 강조</p>
+    </div>
+
+    <div class="highlight-box">
+      <div class="ht">💡 기출분석으로 본 기말 핵심 메시지</div>
+      <div>여의도고 물리학 시험은 <b>① 그래프 해석력 ② 복합 개념 정리 능력 ③ 함정 회피력 ④ 서답형 풀이 작성력</b> — 이 4가지가 점수를 결정합니다. 기말 단원이 바뀌어도 이 4가지 패턴은 그대로 유지될 가능성이 높으므로, 단원 학습과 함께 <b>위 4가지 능력을 의식적으로 훈련</b>해야 합니다.</div>
+    </div>
+  </section>
+
+  <div class="academy-footer">
+    <div class="af-name">최과학 과학전문학원</div>
+    <div class="af-desc">여의도고 2학년 물리학 · 2026 1학기 중간 기출분석 & 기말 대비 전략</div>
+    <div class="af-links">
+      <a href="http://app.choisci.com" target="_blank" class="af-btn af-home">
+        🏠 학원 홈페이지
+      </a>
+      <a href="http://pf.kakao.com/_ximxdfG/chat" target="_blank" class="af-btn af-kakao">
+        💬 카톡 상담 채널
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    분석 기준일 : 2026.4.30 · 출제 학교 : 여의도고등학교<br>
+    Powered by <b>최과학 과학전문학원</b> · 미영쌤 손풀이 답지 © 2026
+  </footer>
+</div>
+
+<!-- 플로팅 버튼 -->
+<div class="floating-buttons">
+  <a href="http://pf.kakao.com/_ximxdfG/chat" target="_blank" class="fab fab-kakao" title="카톡 상담">💬</a>
+  <a href="http://app.choisci.com" target="_blank" class="fab fab-home" title="학원 홈페이지">🏠</a>
+</div>
+
+<!-- 라이트박스 -->
+<div id="lightbox" onclick="closeLightbox()">
+  <div class="close-hint">✕ 닫기 (ESC)</div>
+  <img id="lightbox-img" src="" alt="확대 이미지">
+</div>
+
+<script>
+  function openLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
+
+<script>
+  // 단원별 출제 비중 - 도넛 차트
+  new Chart(document.getElementById('unitChart'), {
+    type: 'doughnut',
+    data: {
+      labels: ['역학 (58.7점)', '열역학 (5점)', '전기 (36.3점)'],
+      datasets: [{
+        data: [58.7, 5, 36.3],
+        backgroundColor: ['#1e3a5f', '#f4a261', '#4a6fa5'],
+        borderColor: '#fff',
+        borderWidth: 3
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: { font: { size: 12, family: "'Noto Sans KR'" }, padding: 10 }
+        },
+        tooltip: {
+          callbacks: {
+            label: function(ctx) { return ctx.label + ' : ' + ctx.parsed + '%'; }
+          }
+        }
+      }
+    }
+  });
+
+  // 난이도 분포 - 막대 차트
+  new Chart(document.getElementById('diffChart'), {
+    type: 'bar',
+    data: {
+      labels: ['하 (무조건)', '중 (조금만 더)', '상 (변별)'],
+      datasets: [{
+        label: '점수',
+        data: [52.5, 22.8, 24.7],
+        backgroundColor: ['#2a9d8f', '#f4a261', '#e63946'],
+        borderRadius: 8,
+        barPercentage: 0.6
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: function(ctx) { return ctx.parsed.y + '점'; }
+          }
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          max: 60,
+          ticks: { font: { size: 11 }, callback: function(v) { return v + '점'; } },
+          grid: { color: '#e8edf3' }
+        },
+        x: {
+          ticks: { font: { size: 12, family: "'Noto Sans KR'" } },
+          grid: { display: false }
+        }
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
